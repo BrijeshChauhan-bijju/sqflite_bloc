@@ -12,7 +12,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       try {
         var result = await productRepository.getProducts();
         emit(GetProductSuccessState(product: result));
-      } catch (e) {
+      }on Exception  {
         emit(GetProductFailureState(error: 'some thing went wrong'));
       }
     });

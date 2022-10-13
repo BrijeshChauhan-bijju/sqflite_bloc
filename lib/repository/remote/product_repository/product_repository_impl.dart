@@ -9,9 +9,11 @@ class ProductRepositoryImpl extends ProductRepository {
 
     var result = await Dio().get("https://dummyjson.com/products");
     print("got result=>,${result}");
+    print("got result=>,${result.statusCode}");
 
     if (result.statusCode == 200) {
-      return productFromJson(result.data);
+      //return productFromJson(result.data);
+      return Product.fromJson(result.data);
     } else {
       throw Exception('Some thing went wrong');
     }

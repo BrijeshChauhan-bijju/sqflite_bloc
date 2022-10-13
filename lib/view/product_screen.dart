@@ -42,7 +42,7 @@ class _ProductScreenState extends State<ProductScreen> {
 
   Widget _buildBody() {
     return Container(
-      padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+      margin: const EdgeInsets.only(top: 20, left: 20, right: 20,bottom: 20),
       child: BlocListener<ProductBloc, ProductState>(
         listener: (context, state) {
           if (state is GetProductInitialState) {
@@ -63,14 +63,15 @@ class _ProductScreenState extends State<ProductScreen> {
               );
             } else if (state is GetProductLoadingState ||
                 state is GetProductInitialState) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else {
               return GridView.builder(
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    childAspectRatio: 1.7 / 2,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 1.7 / 1.7,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                ),
                 itemCount: state.product!.products!.length,
                 itemBuilder: (context, index) {
                   return Card(
@@ -81,7 +82,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       child: Column(
                         children: [
                           ClipRRect(
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(20),
                                 topRight: Radius.circular(20)),
                             child: Container(
@@ -95,18 +96,18 @@ class _ProductScreenState extends State<ProductScreen> {
                                             .images![0],
                                         fit: BoxFit.fill,
                                       )
-                                    : SizedBox.shrink()),
+                                    : const SizedBox.shrink()),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsets.only(top: 15, left: 8, right: 8),
+                            padding: const EdgeInsets.only(
+                                top: 15, left: 8, right: 8),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Expanded(
                                   child: Text(
                                     state.product?.products?[index].title ?? "",
-                                    style: TextStyle(fontSize: 16),
+                                    style: const TextStyle(fontSize: 16),
                                     maxLines: 2,
                                   ),
                                 ),
