@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:sqflite_bloc/model/Product.dart';
 
 abstract class ProductState {

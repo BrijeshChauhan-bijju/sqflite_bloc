@@ -1,0 +1,8 @@
+{
+  "shoppingPage": "Shopping Page",
+  "hindi": "Hindi",
+  "english": "English",
+  "getProductInitialState": "Get product initial state",
+  "getProductLoadingState": "Get product loading state",
+  "getProductSuccessState": "Get product success state"
+}

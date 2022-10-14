@@ -1,0 +1,8 @@
+{
+  "shoppingPage": "शॉपिंग पेज",
+  "hindi": "हिन्दी",
+  "english": "अंग्रेज़ी",
+  "getProductInitialState": "उत्पाद प्रारंभिक स्थिति प्राप्त करें",
+  "getProductLoadingState": "उत्पाद लोडिंग स्थिति प्राप्त करें",
+  "getProductSuccessState": "उत्पाद की सफलता की स्थिति प्राप्त करें"
+}

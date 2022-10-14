@@ -11,8 +11,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       emit(GetProductLoadingState());
       try {
         var result = await productRepository.getProducts();
-        emit(GetProductSuccessState(product: result));
-      }on Exception  {
+        result.fold((left) {
+          emit(GetProductFailureState(error: left));
+        }, (right) {
+          emit(GetProductSuccessState(product: right));
+        });
+      } on Exception {
         emit(GetProductFailureState(error: 'some thing went wrong'));
       }
     });

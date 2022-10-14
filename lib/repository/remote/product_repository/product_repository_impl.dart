@@ -1,21 +1,23 @@
 import 'package:dio/dio.dart';
+import 'package:either_dart/either.dart';
+import 'package:flutter/material.dart';
 import 'package:sqflite_bloc/model/Product.dart';
 import 'package:sqflite_bloc/repository/remote/product_repository/product_repository.dart';
 
 class ProductRepositoryImpl extends ProductRepository {
   @override
-  Future<Product> getProducts() async {
+  Future<Either<String, Product>> getProducts() async {
 // products api to fetch products
 
     var result = await Dio().get("https://dummyjson.com/products");
-    print("got result=>,${result}");
-    print("got result=>,${result.statusCode}");
+    debugPrint("got result=>,${result}");
+    debugPrint("got result=>,${result.statusCode}");
 
     if (result.statusCode == 200) {
       //return productFromJson(result.data);
-      return Product.fromJson(result.data);
+      return Right(Product.fromJson(result.data));
     } else {
-      throw Exception('Some thing went wrong');
+     return Left('Some thing went wrong');
     }
   }
 }
